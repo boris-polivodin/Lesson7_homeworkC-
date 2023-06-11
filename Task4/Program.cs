@@ -1,16 +1,18 @@
-﻿/*Задача 52. Задайте двумерный массив из целых чисел. Найдите среднее арифметическое элементов в каждом столбце.
+﻿/*
+Дополнительное:
 
+Задайте двумерный массив. Найдите сумму элементов, находящихся на главной диагонали (с индексами (0,0); (1;1) и т.д.
 Например, задан массив:
 1 4 7 2
 5 9 2 3
 8 4 2 4
-Среднее арифметическое каждого столбца: 4,6; 5,6; 3,6; 3.
+Сумма элементов главной диагонали: 1+9+2 = 12
 */
 class Program {
     public static void Main(string[] args) {
         int[,] matrix = GetArray();
         PrintMatrix(matrix);
-        Console.Write("Среднее арифметическое каждого столбца: " + SearchAverage(matrix));
+        Console.Write("Сумма элементов главной диагонали: " + SumCalculater(matrix));
     }
 
     static int[,] GetArray() {
@@ -38,18 +40,17 @@ class Program {
         }
     }
 
-    static string SearchAverage(int[,] array) {
+    static string SumCalculater(int[,] array) {
         string result = string.Empty;
         double sum = 0;
         int lengthRow = array.GetLength(0);
         int lengthCol = array.GetLength(1);
-        for (int j = 0; j < lengthCol; j++) {
-            sum = 0;
-            for (int i = 0; i < lengthRow; i++) {
-                sum += array[i,j];
-            }
-            result += Math.Round(sum/lengthRow,1) + (j < lengthCol - 1 ? "; " : ".");
+        for (int i = 0; i < lengthRow && i < lengthCol; i++) {
+           sum += array[i,i];
+           result += array[i,i] + (i < lengthRow - 1 && i < lengthCol - 1 ? "+" : ""); 
         }
+
+        result += " = " + sum;
         return result;
     }
 }
