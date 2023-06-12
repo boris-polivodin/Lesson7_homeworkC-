@@ -40,9 +40,16 @@ class Program {
   }
 
   static void PrintMatrix(double[,] array) {
+    string separator;
+    int lengthChar;
     for (int i = 0; i < array.GetLength(0); i++) {
       for (int j = 0; j < array.GetLength(1); j++) {
-        Console.Write(array[i,j] + "\t");
+        lengthChar = array[i,j].ToString().Length;
+        if (lengthChar == 1) separator = "      ";
+        else if (lengthChar == 2) separator = "     ";
+        else if (lengthChar == 3) separator = "    ";
+        else separator = "   ";
+        Console.Write(array[i,j] + separator);
       }
       Console.WriteLine();
     }
