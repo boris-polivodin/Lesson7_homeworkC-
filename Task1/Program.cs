@@ -49,7 +49,7 @@ class Program {
         else if (lengthChar == 2) separator = "     ";
         else if (lengthChar == 3) separator = "    ";
         else separator = "   ";
-        Console.Write(array[i,j] + separator);
+        Console.Write(separator + array[i,j]);
       }
       Console.WriteLine();
     }
