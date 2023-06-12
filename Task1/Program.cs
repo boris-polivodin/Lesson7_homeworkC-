@@ -10,7 +10,7 @@ class Program {
   public static void Main(string[] args) {
     int rows = Prompt("Введите количество строк массива: ");
     int cols = Prompt("Введите количество колонок массива: ");
-    double[,] matrix = GetArray(rows, cols, -10, 10);
+    double[,] matrix = GetArray(rows, cols);
     PrintMatrix(matrix);
   }
 
@@ -22,9 +22,11 @@ class Program {
     return number;
   }
 
-  static double[,] GetArray(int m, int n, int down, int up) {
+  static double[,] GetArray(int m, int n) {
+    var lowerLimit = -10;
+    var upperLimit = 10;
     double[,] arr = new double[m,n];
-    FillArray(arr, down, up);
+    FillArray(arr, lowerLimit, upperLimit);
     return arr;
   }
     

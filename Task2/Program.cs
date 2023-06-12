@@ -26,17 +26,20 @@ class Program {
     }
 
     static int[,] GetArray() {
+        var lowerLmit = 2;
+        var upperLimit = 11;
         Random rand = new Random();
-        int[,] arr = new int[rand.Next(2, 11), rand.Next(2, 11)];
+        int[,] arr = new int[rand.Next(lowerLmit, upperLimit), rand.Next(lowerLmit, upperLimit)];
         FillArray(arr);
         return arr;
     }
     
     static void FillArray(int[,] arr) {
         Random rand = new Random();
+        var maxValue = 10;
         for (int i = 0; i < arr.GetLength(0); i++) {
             for (int j = 0; j < arr.GetLength(1); j++) {
-                arr[i,j] = rand.Next(10);
+                arr[i,j] = rand.Next(maxValue);
             }
         }
     }
